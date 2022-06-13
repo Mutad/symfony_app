@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block page_content %}
+    {{ include('posts/recent.html.twig', {categories: categories}) }}
+{% endblock %}

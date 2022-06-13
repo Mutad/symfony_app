@@ -1,0 +1,11 @@
+<div class="row g-0 glass rounded overflow-hidden flex-md-row mb-4 h-md-250 position-relative featured-card-small">
+    <div class="col p-4 d-flex flex-column justify-content-center position-static">
+        <strong class="d-inline-block mb-2 text-primary">{{ post.category.name }}</strong>
+        <h4 class="mb-0">{{ post.title }}</h4>
+        <div class="mb-1 text-muted">{{ post.createdAt|date("j M")}}</div>
+        <p class="card-text mb-auto">{{ post.lead }}</p>
+        <a href="/posts/{{ post.id }}" class="stretched-link">Continue reading</a>
+    </div>
+    <div class="col-6 d-none d-lg-block bg-thumbnail" style="background-image: url({{ post.imageUrl }})">
+    </div>
+</div>

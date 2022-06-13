@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+    {% block featured %}
+        {{ render(controller('App\\Controller\\PostController::featuredCards',{category: category??null})) }}
+    {% endblock %}
+
+    <div class="row">
+        <div class="col-md-8 mt-3">
+            {% block page_content %}
+                Something went wrong.
+            {% endblock %}
+        </div>
+        <div class="col-md-4">
+            {% block sidebar %}
+                {{ include('sidebar.html.twig') }}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+<div class="p-3 glass rounded mb-3 category-heading d-flex align-items-center justify-content-between position-relative">
+    <h2 class="fst-italic">{{ category.name }}</h2>
+    <a href="/categories/{{ category.id }}" class="stretched-link">go to category ></a>
+</div>
+<div class="row mb-5">
+    {% if category.getTopPosts(6) is empty %}
+        <div class="col-md-12">
+            <div class="p-4 glass rounded d-flex flex-column align-items-center">
+                <img src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/FFFFFF/external-page-not-found-user-interface-smashingstocks-glyph-smashing-stocks.png"/>
+                No posts found in this category
+            </div>
+        </div>
+    {% endif %}
+    {% for post in category.getTopPosts(6) %}
+        <div class="col-md-6 col-md-auto">
+            {{ include('posts/cards/post.html.twig', {'post': post}) }}
+        </div>
+    {% endfor %}
+</div>

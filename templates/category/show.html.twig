@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block page_content %}
+
+    {{ include('posts/category.html.twig', {category: category}) }}
+
+{% endblock %}

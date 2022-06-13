@@ -1,3 +1,8 @@
+#controllers:
+#    resource: ../src/Controller/RandomController.php
+#    type: annotation
+#    prefix: /test
+
 controllers:
     resource: ../src/Controller/
     type: annotation

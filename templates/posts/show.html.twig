@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block featured %}
+
+{% endblock %}
+{% block page_content %}
+    <img src="{{ post.imageUrl?post.imageUrl:'https://picsum.photos/1920/1080' }}" alt=""
+         class="rounded col-12 responsive bg-thumbnail mb-3">
+    <h1 class="mb-3 glass p-3 rounded">{{ post.title }}</h1>
+    <div class="glass darker rounded p-3 mb-3">
+        <p>{{ post.body | raw }}</p>
+    </div>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="glass rounded p-3 mb-3">
+            {{ form(form) }}
+        </div>
+    {% endif %}
+
+    {% if post.comments is not empty %}
+        <div class="glass rounded p-2 mb-2">
+            <h2>Comments</h2>
+        </div>
+        {% for comment in post.comments|reverse %}
+            <div class="glass rounded p-3 mb-2">
+                <small>
+                    {{ comment.user.email }}
+                </small>
+                <p class="mb-0">
+                    {{ comment.content }}
+                </p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

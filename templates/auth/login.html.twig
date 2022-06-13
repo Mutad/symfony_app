@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block featured %}
+{% endblock %}
+
+{% block page_content %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('login') }}" method="post" class="glass rounded p-3">
+        <div class="mb-3">
+            <label class="form-label" for="username">Email</label>
+            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" id="password" name="_password"/>
+        </div>
+
+        <input type="hidden" name="_target_path" value="/posts"/>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary rounded p-3">Sign in</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% if (posts[0] is defined) %}
+    {{ include('posts/cards/featured_big.html.twig', {post: posts[0]}) }}
+{% endif %}
+
+{% if ( (posts[1] is defined and posts[1] != null) and (posts[2] is defined and posts[2] != null)) %}
+    <div class="row mb-2">
+        <div class="col-md-6 ">
+            {{ include('posts/cards/featured_small.html.twig', {post:posts[1]}) }}
+        </div>
+        <div class="col-md-6 ">
+            {{ include('posts/cards/featured_small.html.twig', {post:posts[2]}) }}
+        </div>
+    </div>
+{% endif %}

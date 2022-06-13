@@ -1,0 +1,5 @@
+{% for category in categories %}
+    <div>
+        {{ include('posts/category.html.twig', {category:category}) }}
+    </div>
+{% endfor %}

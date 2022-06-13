@@ -1,0 +1,11 @@
+<div
+        class="p-4 p-md-5 mb-4 rounded featured-card-big bg-thumbnail position-relative h-md-500 d-flex align-items-end"
+        style="background-image: url({{ post.imageUrl?post.imageUrl:'https://picsum.photos/1920/1080' }})"
+>
+    <div class="col-lg-6 glass rounded p-2 mt-auto">
+        <h4 class="title">{{ post.title }}</h4>
+        {#        <p class="lead my-3">{{ post.lead }}</p> #}
+        <p class="lead mb-0"><a href="/posts/{{ post.id }}" class="text-white fw-bold stretched-link">Continue
+                reading...</a></p>
+    </div>
+</div>

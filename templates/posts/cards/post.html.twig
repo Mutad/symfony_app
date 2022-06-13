@@ -1,0 +1,14 @@
+<div class="p-4 row g-0 glass rounded overflow-hidden flex-md-row mb-4 position-relative featured-card-small">
+    <h4 class="mb-0 text-overflow-ellipsis">{{ post.title }}</h4>
+    {% set days = date(post.createdAt).diff(date()).days %}
+    <div class="mb-auto text-muted">
+        {% if (days == 0) %}
+            Just now
+        {% elseif (days == 1) %}
+            {{ days }} day age
+        {% else %}
+            {{ days }} days ago
+        {% endif %}
+    </div>
+    <a href="/posts/{{ post.id }}" class="stretched-link display-none">Continue reading</a>
+</div>
