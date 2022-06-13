@@ -29,6 +29,8 @@ class Category
 
     public function __construct()
     {
+        $this->color = 'ffffff';
+        $this->views = 0;
         $this->posts = new ArrayCollection();
     }
 

@@ -27,33 +27,8 @@ class PostController extends AbstractController
 {
 
     /**
-     * @Route("/posts/test", name="post_test")
-     */
-    public function test(PostRepository $postRepository, MessageBusInterface $messageBus, LoggerInterface $logger, Scrapper $scrapper)
-    {
-        dd($this->getUser());
-
-        $messageBus->dispatch(new PageParseMessage('https://apnews.com/article/russia-ukraine-europe-war-crimes-d413e4dd5612045d73ce37b898c2c735', $postRepository->find(18)));
-//        $logger->info('test');
-//        $messageBus->dispatch(new PageParseMessage());
-
-//        $scrapper->parseAdditionalLinks($postRepository->find(18));
-//        dd(Scrapper::parsePage('https://apnews.com/f81540846bd0163f5820206f2722369e'), 'test');
-        return new Response('OK');
-//        $client = new Client();
-//        $text = '';
-//        $crawler = $client->request('GET', 'https://apnews.com/b681938a1d8b382bd1fe76094d6c5333');
-//        dd($client->getResponse());
-//        $client->getResponse()->isRedirect();
-//        $crawler = $client->followRedirect();
-//        $crawler->filter('*')->each(function ($node) use ($text) {
-////            $text .= $node->text() . "\n";
-//            echo $node->text() . "<br><br>";
-//        });
-//        return $this->json(['text' => $text]);
-    }
-
-    /**
+     * A function to create a new post. Parses the page from the supported url and creates a new post.
+     *
      * @Route("/posts/new", name="app_post_new")
      */
     public function new(Request $request, CategoryRepository $categoryRepository, PostRepository $postRepository, MessageBusInterface $messageBus, Scrapper $scrapper): Response
@@ -129,6 +104,8 @@ class PostController extends AbstractController
     }
 
     /**
+     * A function to show list of posts.
+     *
      * @Route("/posts", name="app_post_index")
      */
     public function index(CategoryRepository $categoryRepository, PostRepository $postRepository): Response
@@ -140,6 +117,8 @@ class PostController extends AbstractController
     }
 
     /**
+     * Shows a post. Increments the view count and category view count.
+     *
      * @Route("/posts/{post_id}", name="app_post_show")
      */
     public function show(Request $request, $post_id, ManagerRegistry $doctrine, CommentRepository $commentRepository): Response
@@ -197,6 +176,8 @@ class PostController extends AbstractController
     }
 
     /**
+     * Manuallly parse a page. Parses all found links in content and it's children.
+     *
      * @Route("/posts/{post_id}/parse", name="app_post_parse")
      * @param $post_id
      * @return Response
